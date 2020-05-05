@@ -1,5 +1,9 @@
 console.log("app.js is connected!");
 
+///////////////////////////
+// Class Declarations
+///////////////////////////
+
 class Character {
     constructor(name) {
         this.name = name;
@@ -27,6 +31,7 @@ class Character {
             console.log("Studying!");
             // Updates energy, mood, knowledge
             this.update(-5, 10, 50);
+            this.isStudying = true;
         }
     }
     getStatus() {
@@ -42,10 +47,12 @@ class Character {
     }
 };
 
+// Wolfy's Class
 class Antagonist extends Character {
     constructor (name) {
         super (name);
         this.lostToDork = false;
+        this.dorkKnowledge = this.knowledge + 50;
     }
 
     chooseAction(rival) {
@@ -59,6 +66,39 @@ class Antagonist extends Character {
             this.cram();
         }
     }
+}
+
+///////////////////
+// Global Variables
+///////////////////
+
+const DorkOrk = new Character('Dork Ork');
+const Wolfy = new Antagonist('Wolfy Doublesmart');
+
+const day = 1;
+const turn = 1;
+
+
+///////////////////
+// Game Functions
+///////////////////
+
+const gameUpdate = () => {
+    
+    // Update turn and day
+    // There are 4 turns per day
+    if (turn === 4) { 
+        turn = 1;
+        day += 1;
+    } else {
+        turn += 1; 
+    }
+    
+    DorkOrk.isStudying = false;
+    Wolfy.isStudying = false; 
+
+    // Update UI with Ork's stats
+    // Log Wolfy's stats to console?
 }
 
 // ===== Test code =====
