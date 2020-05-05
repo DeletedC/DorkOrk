@@ -8,34 +8,36 @@ class Character {
         this.energy = 100;
         this.items = {};
         this.location = "";
+        this.isStudying = false;
         this.hasCrammed = false;
     }
     
     // Methods
-    getLocation () {
+    getLocation() {
         return this.location;
     }
-
     setLocation (strLocation) {
         this.location = strLocation;
     }
-
-    study () {
+    study() {
         if (this.energy < 10) {
             console.log("I'm too tired to study");
         } else {
             console.log("Studying!");
-            this.energy -= 5;
-            this.mood += 10;
-            this.knowledge += 50;
+            // Updates energy, mood, knowledge
+            this.update(-5, 10, 50);
         }
     }
-
-    getStatus () {
+    getStatus() {
         return {knowledge: this.knowledge,
                 mood: this.mood,
                 energy: this.energy,
                 }
+    }
+    update(energy = null, mood = null, knowledge = null) {
+        this.energy += energy;
+        this.mood += mood;
+        this.knowlege += knowledge;
     }
 };
 
@@ -46,6 +48,9 @@ class Antagonist extends Character {
     }
 
     chooseAction(rival) {
+        if (rival.getLocation === this.location) {
+
+        }
         if (rival.knowledge - this.knowledge > 50) {
             this.study();
         } else if (this.lostToDork === true) {
