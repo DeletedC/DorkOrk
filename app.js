@@ -16,6 +16,10 @@ class Character {
         return this.location;
     }
 
+    setLocation (strLocation) {
+        this.location = strLocation;
+    }
+
     study () {
         if (this.energy < 10) {
             console.log("I'm too tired to study");
@@ -23,6 +27,7 @@ class Character {
             console.log("Studying!");
             this.energy -= 5;
             this.mood += 10;
+            this.knowledge += 50;
         }
     }
 
@@ -33,6 +38,21 @@ class Character {
                 }
     }
 };
+
+class Antagonist extends Character {
+    constructor (name) {
+        super (name);
+        this.lostToDork = false;
+    }
+
+    chooseAction(rival) {
+        if (rival.knowledge - this.knowledge > 50) {
+            this.study();
+        } else if (this.lostToDork === true) {
+            this.cram();
+        }
+    }
+}
 
 // ===== Test code =====
 
