@@ -6,6 +6,7 @@ class Character {
         this.knowledge = 0;
         this.mood = 0;
         this.energy = 100;
+        this.recall = this.energy / 10;
         this.items = {};
         this.location = "";
         this.isStudying = false;
@@ -37,7 +38,7 @@ class Character {
     update(energy = null, mood = null, knowledge = null) {
         this.energy += energy;
         this.mood += mood;
-        this.knowlege += knowledge;
+        this.knowledge += knowledge;
     }
 };
 
@@ -48,10 +49,11 @@ class Antagonist extends Character {
     }
 
     chooseAction(rival) {
-        if (rival.getLocation === this.location) {
-
-        }
-        if (rival.knowledge - this.knowledge > 50) {
+        if (rival.getLocation() === this.location && rival.isStudying === true) {
+            // Check if Dork is studying, if so, also study
+            // Need to add a way for isStudying to last more than a turn
+            this.study();
+        } else if (rival.knowledge - this.knowledge > 50) {
             this.study();
         } else if (this.lostToDork === true) {
             this.cram();
@@ -62,6 +64,7 @@ class Antagonist extends Character {
 // ===== Test code =====
 
 // const DorkOrk = new Character ("Dork Ork");
+// console.log(DorkOrk.recall);
 
 // console.log(DorkOrk);
 // console.log(DorkOrk.getStatus());
