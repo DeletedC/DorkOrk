@@ -1,4 +1,8 @@
-/* CSS Reset */
+/* 
+==========
+CSS Reset 
+==========
+*/
 
 *,
 *::before,
@@ -12,13 +16,11 @@ body {
     background: black;
 }
 
-#gameScreen {
-    height: 100vh;
-    width: 80vw;
-    margin: 0 auto;
-    background: blue;
-}
-
+/* 
+=============
+Title Screen 
+=============
+*/
 #titleScreen {
     display: flex;
     position: absolute;
@@ -52,6 +54,11 @@ body {
     text-align: center;
 }
 
+/* 
+==================
+Instructions Modal
+==================
+*/
 #modal {
     background: rgba(0,0,0,0.4);
 	position: fixed;
@@ -92,6 +99,11 @@ body {
     text-transform: uppercase;
 }
 
+/* 
+============================
+Info Bar at Bottom of Screen
+============================
+*/
 #infoBar {
     /* Hide until needed */
     display: none;
@@ -122,4 +134,16 @@ body {
 #infobar_Continue > h3 {
     letter-spacing: .5rem;
     text-transform: uppercase;
+}
+
+/* 
+=============
+Game Board  
+=============
+*/
+#gameScreen {
+    height: 100vh;
+    width: 80vw;
+    margin: 0 auto;
+    background: blue;
 }
