@@ -19,7 +19,42 @@ body {
     background: blue;
 }
 
+#titleScreen {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 2;
+    text-transform: uppercase;
+    height: 100vh;
+    width: 100vw;
+    margin: 0 auto;
+    background: gold;
+}
+
+#title {
+    font-size: 6rem;
+}
+
+#subTitle {
+    font-size: 3rem;
+}
+
+#btnPlay {
+    width: 25vw;
+    height: 15vh;
+    border-radius: 2rem;
+    border: 1rem solid white;
+    background: lightblue;
+    font-size: 3rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
 #infoBar {
+    /* Hide until needed */
+    display: none;
     position: relative;
     bottom: -78vh;
     width: 98%;
@@ -30,7 +65,7 @@ body {
     border-radius: 2rem;
 }
 
-#btnContinue {
+#infobar_Continue {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,7 +79,7 @@ body {
     bottom: 0;
 }
 
-#btnContinue > h3 {
+#infobar_Continue > h3 {
     letter-spacing: .5rem;
     text-transform: uppercase;
 }
