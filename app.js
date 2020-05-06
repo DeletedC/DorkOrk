@@ -129,11 +129,35 @@ const showInfoBar = () => {
     // Add a sliding up animation
 }
 
-// ===== Title Screen =====
+const showModal = () => {
+    $modal.show();
+}
 
+const gameStart = () => {
+    clearScreen();
+    // Load the game board
+    // fadeIn();
+}
+
+// This is supposed to generate the title screen
+// It does, but pushes the title off-screen
+// Commenting out, might be able to fix later
+
+// const makeTitleScreen = () => {
+//     const $titleScreen = $('<div>').attr("id", "titleScreen");
+//     $titleScreen.append($('<h1>').attr("id", "title").text("Dork Ork"));
+//     $titleScreen.append($('<h2>').attr("id", "subTitle").text("Academic Master"));
+//     const $btnPlay = $('<div>').attr("id", "btnPlay");
+//     $btnPlay.append($('<h3>').text('Play'));
+//     $titleScreen.append($btnPlay);
+//     $titleScreen.appendTo('body');
+// }
+
+// ===== Title Screen =====
+const $titleScreen = $('#titleScreen');
 const $gameScreen = $('#gameScreen');
-const $titleScreen = $("#titleScreen");
 const $btnPlay = $("#btnPlay");
+const $modal = $('#modal');
 
 // ===== Intro and Instructions =====
 
