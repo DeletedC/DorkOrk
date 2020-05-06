@@ -101,6 +101,50 @@ const gameUpdate = () => {
     // Log Wolfy's stats to console?
 }
 
+/////////////////////////////
+// jQuery
+/////////////////////////////
+
+// ===== UI Functions and Variables =====
+
+const fadeOut = () => {
+    // Cover the screen with an 0% opacity div
+    // Slowly bring it up to 100% opacity
+}
+const fadeIn = () => {
+    // Take the 100% opacity div
+    // Slowly bring it down to 0% opacity
+    // Remove the div
+}
+
+const clearScreen = () => {
+    fadeOut();
+    $gameScreen.children().remove();
+}
+
+// Info Bar, goes at the bottom of the screen
+const $infoBar = $("#infoBar");
+const showInfoBar = () => {
+    $infoBar.show();
+    // Add a sliding up animation
+}
+
+// ===== Title Screen =====
+
+const $gameScreen = $('#gameScreen');
+const $titleScreen = $("#titleScreen");
+const $btnPlay = $("#btnPlay");
+
+// ===== Intro and Instructions =====
+
+//////////////////////////
+// Game Starts Here
+//////////////////////////
+
+$(()=> {
+
+});
+
 // ===== Test code =====
 
 // const DorkOrk = new Character ("Dork Ork");
