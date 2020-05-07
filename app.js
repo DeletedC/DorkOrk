@@ -101,6 +101,24 @@ const gameUpdate = () => {
     // Log Wolfy's stats to console?
 }
 
+const gameEncounter = () => {
+    const randomMultipier = Math.floor(Math.random() * 10);
+    
+    if (Wolfy.knowledge >= DorkOrk.knowledge) {
+        if (Wolfy.recall * randomMultipier > DorkOrk.recall * randomMultipier) {
+            DorkOrk.update(-10, -20);
+            Wolfy.update(10, 30);
+            return "Wolfy has won the challenge.";
+        } else if (Wolfy.recall * randomMultipier < DorkOrk.recall * randomMultipier) {
+            DorkOrk.update(10, 20);
+            Wolfy.update(-10, -20);
+            return "Ork has won the challenge!";
+        }
+    } else {
+        return "Wolfy couldn't come up with a question.";
+    }
+}
+
 /////////////////////////////
 // jQuery
 /////////////////////////////
