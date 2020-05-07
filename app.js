@@ -133,6 +133,10 @@ const showModal = () => {
     $modal.show();
 }
 
+const hideModal = () => {
+    $modal.hide();
+}
+
 const gameStart = () => {
     clearScreen();
     // Load the game board
@@ -158,6 +162,7 @@ const $titleScreen = $('#titleScreen');
 const $gameScreen = $('#gameScreen');
 const $btnPlay = $("#btnPlay");
 const $modal = $('#modal');
+const $btnModalClose = $('#btnModalClose');
 
 // ===== Intro and Instructions =====
 
@@ -166,7 +171,8 @@ const $modal = $('#modal');
 //////////////////////////
 
 $(()=> {
-
+$btnPlay.on('click', showModal);
+$btnModalClose.on('click', hideModal);
 });
 
 // ===== Test code =====
