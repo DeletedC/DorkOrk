@@ -26,9 +26,9 @@ class Character {
     }
     study() {
         if (this.energy < 10) {
-            infobarLoad(`${name}: I'm too tired to study`);
+            infobarLoad(`${this.name}: I'm too tired to study`);
         } else {
-            infobarLoad(`${name}: Study time!`);
+            infobarLoad(`${this.name}: Study time!`);
             // Updates energy, mood, knowledge
             this.update(-5, 10, 50);
             this.isStudying = true;
@@ -77,6 +77,7 @@ const Wolfy = new Antagonist('Wolfy Doublesmart');
 
 const day = 1;
 const turn = 1;
+const win = null;
 
 
 ///////////////////
@@ -96,6 +97,8 @@ const gameUpdate = () => {
     
     DorkOrk.isStudying = false;
     Wolfy.isStudying = false; 
+
+    statsbarUpdate();
 
     // Update UI with Ork's stats
     // Log Wolfy's stats to console?
@@ -148,10 +151,12 @@ const statsbarUpdate = () => {
     $statsBar.children().eq(2).html(`Energy: ${DorkOrk.energy}`);
     $statsBar.children().eq(3).html(`Mood: ${DorkOrk.mood}`);
     $statsBar.children().eq(4).html(`Day: ${day}`);
+    $statsBar.children().eq(5).html(`Location: ${DorkOrk.location}`);
 
     $rivalBar.children().eq(1).html(`Knowlege: ${Wolfy.knowledge}`);
     $rivalBar.children().eq(2).html(`Energy: ${Wolfy.energy}`);
     $rivalBar.children().eq(3).html(`Mood: ${Wolfy.mood}`);
+    $rivalBar.children().eq(4).html(`Location: ${Wolfy.location}`);
 }
 
 const hideFader = () => {
@@ -197,6 +202,7 @@ const gameStart = () => {
     hideModal();
     $btnGameClose.prependTo($gameScreen);
     $titleScreen.hide();
+    gameLoop();
 }
 
 const gameReturnToTitle = () => {
@@ -204,6 +210,25 @@ const gameReturnToTitle = () => {
     hideInfobar();
     $statsBar.hide()
     $gameScreen().hide();
+}
+
+const winLoseCheck = () => {
+    if (DorkOrk.knowledge >= 500) {
+        alert("You've become smart enough to build a rocket to the moon! \nYOU WIN!");
+        win = true;
+    } else if (Wolfy.knowledge >= 500) {
+        alert("Wolfy has beaten you to the moon. \nYou lose.");
+        win = false;
+    }
+}
+
+const gameLoop = () => {
+    while (win === null) {
+        winLoseCheck();
+        Wolfy.study();
+        gameEncounter();
+        statsbarUpdate();
+        }
 }
 
 // ===== Title Screen =====
@@ -220,7 +245,8 @@ const $infobarContinue = $('#infobar_Continue');
 const $infobarText = $('#infobarText');
 const $statsBar = $('#statsBar');
 const $rivalBar = $('#rivalBar');
-
+const $btnStudy = $('#btnStudy');
+const $btnChallengeWolfy = $('#btnChallengeWolfy');
 // ===== Intro and Instructions =====
 
 //////////////////////////
@@ -233,8 +259,8 @@ $btnModalClose.on('click', hideModal);
 $btnStart.on('click', gameStart);
 $btnGameClose.on('click', gameReturnToTitle);
 $infobarContinue.on('click', infobarClear);
-
-statsbarUpdate();
+$btnStudy.on('click', DorkOrk.study);
+$btnChallengeWolfy.on('click', gameEncounter);
 
 });
 
