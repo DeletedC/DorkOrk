@@ -143,6 +143,10 @@ const showInfoBar = () => {
     // Add a sliding up animation
 }
 
+const hideInfobar = () => {
+    $infoBar.hide();
+}
+
 const showModal = () => {
     $modal.show();
 }
@@ -152,22 +156,18 @@ const hideModal = () => {
 }
 
 const gameStart = () => {
-
+    $gameScreen.show();
+    showInfoBar();
+    hideModal();
+    $btnGameClose.prependTo($gameScreen);
+    $titleScreen.hide();
 }
 
-// This is supposed to generate the title screen
-// It does, but pushes the title off-screen
-// Commenting out, might be able to fix later
-
-// const makeTitleScreen = () => {
-//     const $titleScreen = $('<div>').attr("id", "titleScreen");
-//     $titleScreen.append($('<h1>').attr("id", "title").text("Dork Ork"));
-//     $titleScreen.append($('<h2>').attr("id", "subTitle").text("Academic Master"));
-//     const $btnPlay = $('<div>').attr("id", "btnPlay");
-//     $btnPlay.append($('<h3>').text('Play'));
-//     $titleScreen.append($btnPlay);
-//     $titleScreen.appendTo('body');
-// }
+const gameReturnToTitle = () => {
+    $titleScreen.show();
+    hideInfobar();
+    $gameScreen().hide();
+}
 
 // ===== Title Screen =====
 const $body = $('body');
@@ -178,6 +178,7 @@ const $modal = $('#modal');
 const $btnModalClose = $('#btnModalClose');
 const $btnStart = $('#btnStart');
 const $divFader = $('#divFader');
+const $btnGameClose = $('#btnGameClose');
 
 // ===== Intro and Instructions =====
 
@@ -189,6 +190,7 @@ $(()=> {
 $btnPlay.on('click', showModal);
 $btnModalClose.on('click', hideModal);
 $btnStart.on('click', gameStart);
+$btnGameClose.on('click', gameReturnToTitle);
 });
 
 // ===== Test code =====

@@ -33,6 +33,7 @@ Title Screen
     width: 100vw;
     margin: 0 auto;
     background: gold;
+    z-index: 100;
 }
 
 #title {
@@ -78,7 +79,6 @@ Instructions Modal
     background: white;
     border: 2px solid black;
     border-radius: 50%;
-
 }
 
 #instructions {
@@ -194,6 +194,21 @@ Game Board
     width: 80vw;
     margin: 0 auto;
     background: blue;
+}
+
+#btnGameClose {
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: 10vw;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem;
+    width: 2rem;
+    height: 2rem;
+    background: rgba(255, 255, 255, .5);
+    border: 2px solid black;
+    border-radius: 50%;
 }
 
 /* 
