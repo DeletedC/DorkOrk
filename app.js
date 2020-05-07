@@ -107,21 +107,33 @@ const gameUpdate = () => {
 
 // ===== UI Functions and Variables =====
 
+/* I absolutely ruined the fading functions
+    Commenting the entire section out
+
 const fadeOut = () => {
     // Cover the screen with an 0% opacity div
     // Slowly bring it up to 100% opacity
-    alert("fading");
-    $divFader.show();
+    
+    // $divFader.attr("id", "divFadeOut");
+    // $divFader.show();
 }
 const fadeIn = () => {
     // Take the 100% opacity div
     // Slowly bring it down to 0% opacity
-    // Remove the div
+
+    // $divFader.attr("id", "divFadeIn");
+    // setTimeout(hideFader, 2500);
+}
+*/
+
+const hideFader = () => {
+    $divFader.hide();
 }
 
 const clearScreen = () => {
-    fadeOut();
     $gameScreen.hide();
+    $titleScreen.hide();
+    $modal.hide();
 }
 
 // Info Bar, goes at the bottom of the screen
@@ -140,9 +152,7 @@ const hideModal = () => {
 }
 
 const gameStart = () => {
-    clearScreen();
-    // Load the game board
-    // fadeIn();
+
 }
 
 // This is supposed to generate the title screen
@@ -178,7 +188,7 @@ const $divFader = $('#divFader');
 $(()=> {
 $btnPlay.on('click', showModal);
 $btnModalClose.on('click', hideModal);
-$btnStart.on('click', clearScreen);
+$btnStart.on('click', gameStart);
 });
 
 // ===== Test code =====

@@ -111,7 +111,16 @@ Instructions Modal
     text-transform: uppercase;
 }
 
-#divFader {
+/* 
+===========================
+Div for Fading In and Out
+===========================
+*/
+
+/* 
+Wrecked this section. Commenting out.
+
+#divFadeOut {
     display: none;
     position: fixed;
     top: 0;
@@ -119,10 +128,22 @@ Instructions Modal
     width: 100vw;
     height: 100vh;
     background: white;
-    opacity: 1;
+    opacity: 0;
     animation: fadeToWhite 2s linear forwards;
     z-index: 2000;
 }
+
+#divFadeIn {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: white;
+    opacity: 1;
+    animation: fadeIn 2s linear forwards;
+    z-index: 2000;
+} */
 
 /* 
 ============================
@@ -168,6 +189,7 @@ Game Board
 =============
 */
 #gameScreen {
+    display: none;
     height: 100vh;
     width: 80vw;
     margin: 0 auto;
