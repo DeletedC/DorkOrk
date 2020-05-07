@@ -105,18 +105,16 @@ const gameUpdate = () => {
 }
 
 const gameEncounter = () => {
-    const randomMultipier = Math.floor(Math.random() * 10);
-    
-    if (Wolfy.knowledge >= DorkOrk.knowledge) {
-        if (Wolfy.recall * randomMultipier > DorkOrk.recall * randomMultipier) {
-            DorkOrk.update(-10, -20);
-            Wolfy.update(10, 30);
-            infobarLoad("Wolfy has won the challenge. Your mood has dropped");
-        } else if (Wolfy.recall * randomMultipier < DorkOrk.recall * randomMultipier) {
-            DorkOrk.update(10, 20);
-            Wolfy.update(-10, -20);
-            infobarLoad("Ork has won the challenge! Your mood and energy are up!");
-        }
+    alert("CHALLENGE ENCOUNTER!");
+    const randomMultipier = Math.random();
+    if (Wolfy.recall * randomMultipier > DorkOrk.recall * randomMultipier) {
+        DorkOrk.update(-10, -20);
+        Wolfy.update(10, 30);
+        infobarLoad("Wolfy has won the challenge. Your mood has dropped");
+    } else if (Wolfy.recall * randomMultipier < DorkOrk.recall * randomMultipier) {
+        DorkOrk.update(10, 20);
+        Wolfy.update(-10, -20);
+        infobarLoad("Ork has won the challenge! Your mood and energy are up!");
     } else {
         infobarLoad("Wolfy couldn't come up with a question.");
     }
@@ -225,6 +223,12 @@ const winLoseCheck = () => {
 const gameLoop = () => {
     while (win === null) {
         winLoseCheck();
+        const input = prompt("Choose an action \n1. Study \n2. Challenge Wolfy");
+        if (input == 1) {
+            DorkOrk.study();
+        } else if (input == 2) {
+            gameEncounter();
+        };
         Wolfy.study();
         gameEncounter();
         statsbarUpdate();
