@@ -26,9 +26,9 @@ class Character {
     }
     study() {
         if (this.energy < 10) {
-            console.log("I'm too tired to study");
+            infobarLoad(`${name}: I'm too tired to study`);
         } else {
-            console.log("Studying!");
+            infobarLoad(`${name}: Study time!`);
             // Updates energy, mood, knowledge
             this.update(-5, 10, 50);
             this.isStudying = true;
@@ -63,7 +63,7 @@ class Antagonist extends Character {
         } else if (rival.knowledge - this.knowledge > 50) {
             this.study();
         } else if (this.lostToDork === true) {
-            this.cram();
+            // this.cram();
         }
     }
 }
@@ -108,14 +108,14 @@ const gameEncounter = () => {
         if (Wolfy.recall * randomMultipier > DorkOrk.recall * randomMultipier) {
             DorkOrk.update(-10, -20);
             Wolfy.update(10, 30);
-            return "Wolfy has won the challenge.";
+            infobarLoad("Wolfy has won the challenge. Your mood has dropped");
         } else if (Wolfy.recall * randomMultipier < DorkOrk.recall * randomMultipier) {
             DorkOrk.update(10, 20);
             Wolfy.update(-10, -20);
-            return "Ork has won the challenge!";
+            infobarLoad("Ork has won the challenge! Your mood and energy are up!");
         }
     } else {
-        return "Wolfy couldn't come up with a question.";
+        infobarLoad("Wolfy couldn't come up with a question.");
     }
 }
 
@@ -143,6 +143,12 @@ const fadeIn = () => {
     // setTimeout(hideFader, 2500);
 }
 */
+const statsbarUpdate = () => {
+    $statsBar.children().eq(0).html(`Knowlege: ${DorkOrk.knowledge}`);
+    $statsBar.children().eq(1).html(`Energy: ${DorkOrk.energy}`);
+    $statsBar.children().eq(2).html(`Mood: ${DorkOrk.mood}`);
+
+}
 
 const hideFader = () => {
     $divFader.hide();
@@ -161,6 +167,13 @@ const showInfoBar = () => {
     // Add a sliding up animation
 }
 
+const infobarLoad = (string) => {
+    $infobarText.html(string);
+}
+const infobarClear = () => {
+    $infobarText.html("");
+}
+
 const hideInfobar = () => {
     $infoBar.hide();
 }
@@ -175,6 +188,7 @@ const hideModal = () => {
 
 const gameStart = () => {
     $gameScreen.show();
+    $statsBar.show();
     showInfoBar();
     hideModal();
     $btnGameClose.prependTo($gameScreen);
@@ -184,6 +198,7 @@ const gameStart = () => {
 const gameReturnToTitle = () => {
     $titleScreen.show();
     hideInfobar();
+    $statsBar.hide()
     $gameScreen().hide();
 }
 
@@ -197,6 +212,9 @@ const $btnModalClose = $('#btnModalClose');
 const $btnStart = $('#btnStart');
 const $divFader = $('#divFader');
 const $btnGameClose = $('#btnGameClose');
+const $infobarContinue = $('#infobar_Continue');
+const $infobarText = $('#infobarText');
+const $statsBar = $('#statsBar');
 
 // ===== Intro and Instructions =====
 
@@ -209,6 +227,11 @@ $btnPlay.on('click', showModal);
 $btnModalClose.on('click', hideModal);
 $btnStart.on('click', gameStart);
 $btnGameClose.on('click', gameReturnToTitle);
+$infobarContinue.on('click', infobarClear);
+
+statsbarUpdate();
+infobarLoad("kakakakakakakaka");
+
 });
 
 // ===== Test code =====
