@@ -158,8 +158,22 @@ Stats Bar at Top of Screen
     padding: 1rem;
     line-height: 1.4;
     width: 20%;
-    height: 10vh;
+    height: 15vh;
     background: lightblue;
+    border: .2rem solid orange;
+    border-radius: .2rem;
+    z-index: 1000;
+}
+
+#rivalBar {
+    /* Hide until needed */
+    position: fixed;
+    top: 10rem;
+    padding: 1rem;
+    line-height: 1.4;
+    width: 20%;
+    height: 12vh;
+    background: red;
     border: .2rem solid orange;
     border-radius: .2rem;
     z-index: 1000;

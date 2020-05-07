@@ -144,10 +144,14 @@ const fadeIn = () => {
 }
 */
 const statsbarUpdate = () => {
-    $statsBar.children().eq(0).html(`Knowlege: ${DorkOrk.knowledge}`);
-    $statsBar.children().eq(1).html(`Energy: ${DorkOrk.energy}`);
-    $statsBar.children().eq(2).html(`Mood: ${DorkOrk.mood}`);
+    $statsBar.children().eq(1).html(`Knowlege: ${DorkOrk.knowledge}`);
+    $statsBar.children().eq(2).html(`Energy: ${DorkOrk.energy}`);
+    $statsBar.children().eq(3).html(`Mood: ${DorkOrk.mood}`);
+    $statsBar.children().eq(4).html(`Day: ${day}`);
 
+    $rivalBar.children().eq(1).html(`Knowlege: ${Wolfy.knowledge}`);
+    $rivalBar.children().eq(2).html(`Energy: ${Wolfy.energy}`);
+    $rivalBar.children().eq(3).html(`Mood: ${Wolfy.mood}`);
 }
 
 const hideFader = () => {
@@ -215,6 +219,7 @@ const $btnGameClose = $('#btnGameClose');
 const $infobarContinue = $('#infobar_Continue');
 const $infobarText = $('#infobarText');
 const $statsBar = $('#statsBar');
+const $rivalBar = $('#rivalBar');
 
 // ===== Intro and Instructions =====
 
@@ -230,7 +235,6 @@ $btnGameClose.on('click', gameReturnToTitle);
 $infobarContinue.on('click', infobarClear);
 
 statsbarUpdate();
-infobarLoad("kakakakakakakaka");
 
 });
 
