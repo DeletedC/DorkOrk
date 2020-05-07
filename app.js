@@ -110,6 +110,8 @@ const gameUpdate = () => {
 const fadeOut = () => {
     // Cover the screen with an 0% opacity div
     // Slowly bring it up to 100% opacity
+    alert("fading");
+    $divFader.show();
 }
 const fadeIn = () => {
     // Take the 100% opacity div
@@ -119,7 +121,7 @@ const fadeIn = () => {
 
 const clearScreen = () => {
     fadeOut();
-    $gameScreen.children().remove();
+    $gameScreen.hide();
 }
 
 // Info Bar, goes at the bottom of the screen
@@ -158,11 +160,14 @@ const gameStart = () => {
 // }
 
 // ===== Title Screen =====
+const $body = $('body');
 const $titleScreen = $('#titleScreen');
 const $gameScreen = $('#gameScreen');
 const $btnPlay = $("#btnPlay");
 const $modal = $('#modal');
 const $btnModalClose = $('#btnModalClose');
+const $btnStart = $('#btnStart');
+const $divFader = $('#divFader');
 
 // ===== Intro and Instructions =====
 
@@ -173,6 +178,7 @@ const $btnModalClose = $('#btnModalClose');
 $(()=> {
 $btnPlay.on('click', showModal);
 $btnModalClose.on('click', hideModal);
+$btnStart.on('click', clearScreen);
 });
 
 // ===== Test code =====
